@@ -1,7 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+const { encryptPwd } = require("../helpers/bcrypt");
+const { options } = require("../routes");
 module.exports = (sequelize, DataTypes) => {
   class Assistant extends Model {
     /**
@@ -10,19 +10,35 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Assistant.belongsToMany(models.Patient,{
+      Assistant.belongsToMany(models.Patient, {
         through: models.PatientTreat,
-        foreignKey: "assistantId"})
-      Assistant.hasMany(models.Ward, {foreignKey: "assistantId"})
+        foreignKey: "assistantId",
+      });
+      Assistant.hasMany(models.Ward, { foreignKey: "assistantId" });
     }
   }
-  Assistant.init({
-    name: DataTypes.STRING,
-    password: DataTypes.STRING,
-    address: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Assistant',
-  });
+  Assistant.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: `Name couldn't be empty!`,
+          },
+        },
+      },
+      password: DataTypes.STRING,
+      address: DataTypes.STRING,
+    },
+    {
+      hooks: {
+        beforeCreate: (assistant, options) => {
+          assistant.password = encryptPwd(assistant.password);
+        },
+      },
+      sequelize,
+      modelName: "Assistant",
+    }
+  );
   return Assistant;
 };

@@ -12,14 +12,14 @@
 > Ward
 >
 >> ```
->> npx sequelize-cli model:generate --name Ward --attributes name:string,category:string,availability:boolean,assitantId:integer
+>> npx sequelize-cli model:generate --name Ward --attributes name:string,category:string,availability:boolean,assistantId:integer
 >> ```
 
 
 > Assistant
 >
 >> ```
->> npx sequelize-cli model:generate --name Assistant --attributes name:string,password:string,address:integer
+>> npx sequelize-cli model:generate --name Assistant --attributes name:string,password:string,address:string
 >> ```
 
 

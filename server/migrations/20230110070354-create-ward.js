@@ -18,7 +18,7 @@ module.exports = {
       availability: {
         type: Sequelize.BOOLEAN
       },
-      assitantId: {
+      assistantId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       PatientTreat.belongsTo(models.Patient, {foreignKey: "patientId"})
       PatientTreat.belongsTo(models.Ward, {foreignKey: "wardId"})
-      PatientTreat.belongsTo(models.Asssitant, {foreignKey: "assistantId"})
+      PatientTreat.belongsTo(models.Assistant, {foreignKey: "assistantId"})
     }
   }
   PatientTreat.init({

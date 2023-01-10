@@ -6,12 +6,12 @@ route.get('/server', (req, resp) => {
     })
 })
 
-const patientRoutes = require('./patient');
-const patientTreatRoutes = require('./patientTreat');
-const patientMedicateRoutes = require('./patientMedicate');
-const wardRoutes = require('./ward');
-const doctorRoutes = require('./doctor');
-const assistantRoutes = require('./assistant');
+const patientRoutes = require('./patientRoute');
+const patientTreatRoutes = require('./patientTreatRoute');
+const patientMedicateRoutes = require('./patientMedicateRoute');
+const wardRoutes = require('./wardRoute');
+const doctorRoutes = require('./doctorRoute');
+const assistantRoutes = require('./assistantRoute');
 
 
 route.use('/server/patients', patientRoutes)
