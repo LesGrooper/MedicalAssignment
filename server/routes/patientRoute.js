@@ -2,9 +2,9 @@ const patientRoute = require('express').Router();
 const PatientController = require('../controllers/PatientController');
 
 patientRoute.get('/', PatientController.getData)
-patientRoute.post('/', PatientController.registerData)
+patientRoute.post('/create', PatientController.registerData)
 patientRoute.put('/:id', PatientController.updateData)
-patientRoute.delete('/:id', PatientController.deleteData)
-patientRoute.get('/patient/:id', PatientController.getDataById)
+patientRoute.delete('/delete/:id', PatientController.deleteData)
+patientRoute.get('detail//patient/:id', PatientController.getDataById)
 
 module.exports = patientRoute;

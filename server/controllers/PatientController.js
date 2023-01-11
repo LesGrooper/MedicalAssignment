@@ -1,13 +1,22 @@
-const { Patient } = require("../models");
+const { Patient,  PatientMedicate, PatientTreat } = require("../models");
 
 class PatientController {
   static async getData(req, resp) {
     try {
       let patients = await Patient.findAll({
         order: [[`id`, `ASC`]],
+        include:[
+          {
+            model: PatientMedicate
+          },
+          {
+            model: PatientMedicate
+          }
+        ]
       });
       resp.status(200).json(patients);
     } catch (error) {
+      console.log(error)
       resp.status(500).json(error);
     }
   }
