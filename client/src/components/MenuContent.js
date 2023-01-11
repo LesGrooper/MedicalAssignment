@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { 
     Home,
     Patient,
-    ListPatient
+    ListPatient,
+    CreatePatient
 } from "../pages";
 
 const MenuContent = () => {
@@ -14,6 +15,7 @@ const MenuContent = () => {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/patients" element={<Patient />} >
             <Route path="" element={<ListPatient/>} />
+            <Route path="create" element={<CreatePatient/>} />
           </Route>
         </Routes>
       </Router>
