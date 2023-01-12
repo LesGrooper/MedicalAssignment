@@ -86,7 +86,7 @@ class PatientController {
 
   static async getDataById(req, resp) {
     try {
-      const id = +req.params.id;
+      const id = Number(req.params.id);
       let patients = await Patient.findByPk(id);
       resp.status(200).json(patients);
     } catch (error) {
