@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { addData } from "../../axios/patientAxios";
-// import { useNavigate } from 'react-router-dom'
+import React,{useState} from 'react'
+import { Link } from 'react-router-dom';
+import { addData } from '../../axios/wardAxios';
 
-const CreatePatient = () => {
+const CreateWard = () => {
   const [form, setForm] = useState({
     name: "",
-    address: "",
-    age: 0,
+    category: "",
+    availability: 0,
+    assistantId: 0,
   });
 
   // const navigate = useNavigate();
@@ -15,12 +15,11 @@ const CreatePatient = () => {
   const submitHandler = () => {
     addData(form);
   };
-
   return (
     <>
       <div className="row my-3">
         <div className="w-100 text-center">
-          <h2>Create Data Patient</h2>
+          <h2>Create Data Wards</h2>
         </div>
         <div className="w-75 mx-auto">
           <div className="mb-3">
@@ -32,17 +31,25 @@ const CreatePatient = () => {
             ></input>
           </div>
           <div className="mb-3">
-            <label>Address:</label>
+            <label>Category:</label>
             <input
-              onChange={(e) => setForm({ ...form, address: e.target.value })}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
               type="text"
               className="form-control"
             ></input>
           </div>
           <div className="mb-3">
-            <label>Age:</label>
+            <label>Availability:</label>
             <input
-              onChange={(e) => setForm({ ...form, age: e.target.value })}
+              onChange={(e) => setForm({ ...form, availability: e.target.value })}
+              type="text"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label>Assistant ID:</label>
+            <input
+              onChange={(e) => setForm({ ...form, assistantId: e.target.value })}
               type="text"
               className="form-control"
             ></input>
@@ -51,14 +58,14 @@ const CreatePatient = () => {
             <button className="btn btn-success" onClick={() => submitHandler()}>
               Submit
             </button>
-            <Link className="btn btn-light mx-3" to="/patients">
+            <Link className="btn btn-light mx-3" to="/wards">
               Back
             </Link>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CreatePatient;
+export default CreateWard

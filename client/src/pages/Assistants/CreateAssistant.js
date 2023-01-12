@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { addData } from "../../axios/patientAxios";
-// import { useNavigate } from 'react-router-dom'
+import React,{useState} from 'react'
+import { Link } from 'react-router-dom';
+import { addData } from '../../axios/assistantAxios';
 
-const CreatePatient = () => {
-  const [form, setForm] = useState({
-    name: "",
-    address: "",
-    age: 0,
-  });
+function CreateAssistant() {
 
-  // const navigate = useNavigate();
-
-  const submitHandler = () => {
-    addData(form);
-  };
-
+    const [form, setForm] = useState({
+        name: "",
+        password: "",
+        address: "",
+      });
+    
+      // const navigate = useNavigate();
+    
+      const submitHandler = () => {
+        addData(form);
+      };
   return (
     <>
-      <div className="row my-3">
+        <div className="row my-3">
         <div className="w-100 text-center">
           <h2>Create Data Patient</h2>
         </div>
@@ -32,6 +31,14 @@ const CreatePatient = () => {
             ></input>
           </div>
           <div className="mb-3">
+            <label>Password:</label>
+            <input
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              type="password"
+              className="form-control"
+            ></input>
+          </div>
+          <div className="mb-3">
             <label>Address:</label>
             <input
               onChange={(e) => setForm({ ...form, address: e.target.value })}
@@ -40,25 +47,17 @@ const CreatePatient = () => {
             ></input>
           </div>
           <div className="mb-3">
-            <label>Age:</label>
-            <input
-              onChange={(e) => setForm({ ...form, age: e.target.value })}
-              type="text"
-              className="form-control"
-            ></input>
-          </div>
-          <div className="mb-3">
             <button className="btn btn-success" onClick={() => submitHandler()}>
               Submit
             </button>
-            <Link className="btn btn-light mx-3" to="/patients">
+            <Link className="btn btn-light mx-3" to="/assistants">
               Back
             </Link>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CreatePatient;
+export default CreateAssistant

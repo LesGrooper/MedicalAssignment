@@ -26,8 +26,7 @@ const Home = () => {
                     </Link>
                   </div>
                   <p className="card-text text-center">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -39,15 +38,14 @@ const Home = () => {
                   <h5 className="card-title text-center">List Dokter</h5>
                   <div className="card-header home-icons text-center">
                     <Link
-                      to=""
+                      to="/doctors"
                       className="list-group-item list-group-item-action active"
                     >
                       <GiPlagueDoctorProfile />
                     </Link>
                   </div>
                   <p className="card-text text-center">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -59,15 +57,14 @@ const Home = () => {
                   <h5 className="card-title text-center">List Tempat</h5>
                   <div className="card-header home-icons text-center">
                     <Link
-                      to=""
+                      to="/wards"
                       className="list-group-item list-group-item-action active"
                     >
                       <FaHospital />
                     </Link>
                   </div>
                   <p className="card-text text-center">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -79,15 +76,14 @@ const Home = () => {
                   <h5 className="card-title text-center">List Perawat</h5>
                   <div className="card-header home-icons text-center">
                     <Link
-                      to=""
+                      to="/assistants"
                       className="list-group-item list-group-item-action active"
                     >
                       <FaUserNurse />
                     </Link>
                   </div>
                   <p className="card-text text-center">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>

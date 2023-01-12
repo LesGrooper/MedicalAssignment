@@ -1,27 +1,27 @@
-import axios from "axios";
+import axios  from "axios";
 import Swal from "sweetalert2";
 
-const URL = "http://localhost:3000/server/patients";
+const URL = "http://localhost:3000/server/doctors";
 
 const getData = async (cb) => {
   try {
-    let patients = await axios({
+    let doctors = await axios({
       method: "GET",
       url: URL,
     });
-    cb(patients.data);
+    cb(doctors.data);
   } catch (error) {
     // console.log(error)
     console.status(500).json(error);
   }
 };
 
-const addData = async (patient) => {
+const addData = async (doctor) => {
   try {
-    let patients = await axios({
+    let doctors = await axios({
       method: "POST",
       url: URL + `/create`,
-      data: patient,
+      data: doctor,
     });
     Swal.fire({
       position: 'center',
@@ -31,7 +31,7 @@ const addData = async (patient) => {
       timer: 1500
     })
 
-    console.log(patients.data);
+    console.log(doctors.data);
   } catch (error) {
     console.status(500).json(error);
   }
@@ -49,7 +49,7 @@ const deleteData = async (id) => {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        let patients = await axios({
+        let doctors = await axios({
           method: "DELETE",
           url: URL + `/delete/` + id,
         });
@@ -60,7 +60,6 @@ const deleteData = async (id) => {
         )
       }
     })
-    // console.log(patients);
   } catch (error) {
     console.status(500).json(error);
   }
@@ -68,23 +67,23 @@ const deleteData = async (id) => {
 
 const getDataById = async (id, cb) => {
   try {
-    let patients = await axios({
+    let doctors = await axios({
       method: "GET",
       url: URL + "/detail/" + String(id),
     });
-    // console.log(patients)
-    cb(patients.data);
+    // console.log(doctors)
+    cb(doctors.data);
   } catch (error) {
     console.status(500).json(error);
   }
 };
 
-const editData = async (id, patient) => {
+const editData = async (id, doctor) => {
   try {
-    let patients = await axios({
+    let doctors = await axios({
       method: "PUT",
       url: URL + `/update/` + String(id),
-      data: patient,
+      data: doctor,
     });
     Swal.fire({
       position: 'center',
@@ -94,10 +93,12 @@ const editData = async (id, patient) => {
       timer: 1500
     })
 
-    console.log(patients.data);
+    console.log(doctors.data);
   } catch (error) {
     console.status(500).json(error);
   }
 };
 
-export { getData, addData, deleteData, getDataById, editData };
+export {
+    getData, deleteData, editData, getDataById,addData
+}

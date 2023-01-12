@@ -10,11 +10,6 @@ const NavbarContent = () => {
           <div className="container-fluid">
             <Link to="/" className="btn btn-light">Home</Link>
           </div>
-          <div className="d-flex">
-                <Link className="btn btn-light position-relative">
-                    Logout
-                </Link>
-          </div>
         </nav>
         <Routes>
           <Route exact path="/" />

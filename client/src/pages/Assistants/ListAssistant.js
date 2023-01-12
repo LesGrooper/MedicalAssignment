@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from "react";
-import LoadingBar from "../../helpers/LoadingBar";
-import { Link, useNavigate } from "react-router-dom";
-import { FaPlusCircle } from "react-icons/fa";
+import React, {useState, useEffect} from 'react'
+import LoadingBar from '../../helpers/LoadingBar';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaPlusCircle } from 'react-icons/fa';
+import {getData, deleteData} from '../../axios/assistantAxios'
 
-import { getData, deleteData } from "../../axios/patientAxios";
+function ListAssistant() {
+    const [assistants, setAssistants] = useState([])
 
-const ListPatient = () => {
-  const [patients, setPatients] = useState([]);
-
-  useEffect(() => {
-    getData((result) => setPatients(result));
-  }, []);
-
-  const navigate = useNavigate();
-  const deleteHandler = (id) => {
-    navigate("/patients");
-    deleteData(id);
-  };
+    useEffect(() => {
+      getData((result) => setAssistants(result));
+    }, []);
+  
+    const navigate = useNavigate();
+    const deleteHandler = (id) => {
+      navigate("/assistants");
+      deleteData(id);
+    };
 
   return (
     <>
-      <div className="w-100">
+        <div className="w-100">
         <table className="table table-hover table-rounded">
           <thead className="table-light">
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>Password</th>
               <th>Address</th>
-              <th>Age</th>
               {/* <th>Seen By</th>
               <th>Doctor Name</th>
               <th>Medicine</th>
@@ -36,24 +35,24 @@ const ListPatient = () => {
             </tr>
           </thead>
           <tbody className="table table-info">
-            {patients.length > 0 ? (
-              patients.map((e) => {
+            {assistants.length > 0 ? (
+              assistants.map((e) => {
                 const { id } = e;
                 return (
                   <tr key={id}>
                     <td>{id}</td>
                     <td>
-                      <Link to={`/patients/detail/${id}`}>{e.name}</Link>
+                      <Link to={`/assistants/detail/${id}`}>{e.name}</Link>
                     </td>
+                    <td>{e.password}</td>
                     <td>{e.address}</td>
-                    <td>{e.age}</td>
                     {/* {e.PatientMedicate.map((i) => (
                         <td>{i.seen_by}</td>
                     ))} */}
                     <td>
                       <Link
                       className="btn btn-light"
-                      to={`/patients/update/${id}`}
+                      to={`/assistants/update/${id}`}
                       >Update Data</Link>
                       <button
                         onClick={() => deleteHandler(id)}
@@ -71,7 +70,7 @@ const ListPatient = () => {
           </tbody>
         </table>
         <div className="d-flex">
-          <Link to="/patients/create" className="btn btn-primary">
+          <Link to="/assistants/create" className="btn btn-primary">
             <FaPlusCircle />
             <br />
             Add Data
@@ -82,7 +81,7 @@ const ListPatient = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ListPatient;
+export default ListAssistant

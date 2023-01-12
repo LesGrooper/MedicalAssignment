@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const Patient = () => {
+const Ward = () => {
   return (
     <>
       <div className="container my-3 home">
         <div className="w-100 my-3 text-center">
           <div className="flex">
-            <h2>Patient's Page</h2>
+            <h2>Ward's Page</h2>
             <p>
               {" "}
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
@@ -24,4 +24,4 @@ const Patient = () => {
   );
 };
 
-export default Patient;
+export default Ward;
