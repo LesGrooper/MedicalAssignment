@@ -19,7 +19,8 @@ class WardController {
 
   static async registerData(req, resp) {
     try {
-      const { name, category, availability, assistantId } = req.body;
+      const { name, category, availability } = req.body;
+      const assistantId = +req.userData.id;
 
       let wards = await Ward.create({
         name,

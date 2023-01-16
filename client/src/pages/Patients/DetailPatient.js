@@ -24,11 +24,11 @@ function DetailPatient() {
     getDataInfo();
   }, []);
 
-  // useEffect((id) => {
-  //   fetch(getDataById(id))
-  //    .then((data) => data.json(getDataById))
-  //    .then((data) => setTableData(data))
-  // }, [])
+  useEffect((id) => {
+    fetch(`https://localhost:3000/server/patients/detail/${id}`)
+     .then((data) => data.json(getDataById))
+     .then((data) => setTableData(data))
+  }, [])
 
   const columns = [
     { field: "id", headerName: "id" },

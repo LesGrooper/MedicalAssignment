@@ -22,9 +22,11 @@ const DetailWard = () => {
     });
   };
 
-  useEffect(() => {
-    getDataInfo();
-  }, []);
+  useEffect((id) => {
+    fetch(`https://localhost:3000/server/wards/detail/${id}`)
+     .then((data) => data.json(getDataById))
+     .then((data) => setTableData(data))
+  }, [])
 
   const columns = [
     { field: "id", headerName: "id" },
