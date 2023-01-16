@@ -1,10 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import NavbarContent from "../../components/NavbarContent";
 
 const Ward = () => {
   return (
     <>
-      <div className="container my-3 home">
+      <NavbarContent />
+      <div className="containerfluid home">
         <div className="w-100 my-3 text-center">
           <div className="flex">
             <h2>Ward's Page</h2>

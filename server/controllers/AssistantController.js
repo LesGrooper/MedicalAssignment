@@ -1,4 +1,6 @@
 const { Assistant } = require("../models");
+const {decryptPwd} = require('../helpers/bcrypt');
+const { tokenGenerator, tokenVerifier } = require("../helpers/jsonweboken");
 
 class AssistantController {
   static async getData(req, resp) {
@@ -29,7 +31,7 @@ class AssistantController {
 
   static async loginData(req, resp) {
     try {
-      const { name } = req.body;
+      const { password, name } = req.body;
 
       let emailFound = await Assistant.findOne({
         where: {
@@ -37,12 +39,24 @@ class AssistantController {
         },
       });
 
-      if (!emailFound) {
+      if (emailFound) {
+        if (decryptPwd(password, emailFound.password)) {
+          let accsess_token = tokenGenerator(emailFound)
+          
+          
+          
+          let verifyToken = tokenVerifier(accsess_token)
+          console.log(verifyToken)
+          resp.status(200).json(accsess_token);
+        } else {
+          resp.status(400).json({
+            message: `invalid email/password`
+          })
+        }
+      } else {
         resp.status(404).json({
           message: `name with ${name} not found!`,
         });
-      } else {
-        resp.status(200).json(emailFound);
       }
     } catch (error) {
       resp.status(500).json(error);

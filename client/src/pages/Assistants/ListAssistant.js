@@ -25,7 +25,6 @@ function ListAssistant() {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Password</th>
               <th>Address</th>
               {/* <th>Seen By</th>
               <th>Doctor Name</th>
@@ -44,7 +43,6 @@ function ListAssistant() {
                     <td>
                       <Link to={`/assistants/detail/${id}`}>{e.name}</Link>
                     </td>
-                    <td>{e.password}</td>
                     <td>{e.address}</td>
                     {/* {e.PatientMedicate.map((i) => (
                         <td>{i.seen_by}</td>
